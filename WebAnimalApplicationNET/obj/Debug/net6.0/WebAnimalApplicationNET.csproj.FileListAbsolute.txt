@@ -224,3 +224,4 @@ C:\Users\Angela_Ravololonirin\source\repos\WebAnimalApplicationNET\WebAnimalAppl
 C:\Users\Angela_Ravololonirin\source\repos\WebAnimalApplicationNET\WebAnimalApplicationNET\obj\Debug\net6.0\WebAnimalApplicationNET.pdb
 C:\Users\Angela_Ravololonirin\source\repos\WebAnimalApplicationNET\WebAnimalApplicationNET\obj\Debug\net6.0\WebAnimalApplicationNET.genruntimeconfig.cache
 C:\Users\Angela_Ravololonirin\source\repos\WebAnimalApplicationNET\WebAnimalApplicationNET\obj\Debug\net6.0\ref\WebAnimalApplicationNET.dll
+C:\Users\Angela_Ravololonirin\source\repos\WebAnimalApplicationNET\WebAnimalApplicationNET\bin\Debug\net6.0\App_Data\users.json

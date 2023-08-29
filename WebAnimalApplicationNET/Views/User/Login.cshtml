@@ -1,0 +1,24 @@
+﻿@model WebAnimalApplicationNET.Models.Login
+
+@{
+    ViewData["Title"] = "Connexion";
+}
+
+<h1>Connexion</h1>
+
+<form asp-controller="User" asp-action="Index" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <button type="submit">Se connecter</button>
+</form>
+
+<p>@Model.Message</p>

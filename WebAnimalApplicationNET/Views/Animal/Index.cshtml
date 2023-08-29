@@ -1,56 +1,49 @@
 ﻿@model IEnumerable<WebAnimalApplicationNET.Models.Animal>
 
 
-<head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebAnimalApplicationNET.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>
-    <h1>Listes des animaux</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.type)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.nom)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.couleur)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pattes)
-                </th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.type)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.couleur)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pattes)
-                </td>
-                <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary btn-sm" }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-success btn-sm" }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
-</body>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<h1>Listes des animaux</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.couleur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pattes)
+            </th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.couleur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pattes)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-success btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
