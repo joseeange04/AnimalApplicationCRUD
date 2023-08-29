@@ -3,54 +3,71 @@
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - WebAnimalApplicationNET</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/WebAnimalApplicationNET.styles.css" asp-append-version="true" />
-    </head>
-    <body>
-        @using(Html.BeginForm("Index", "Home", FormMethod.Post, new {@class = "position-absolute top-5 left-20"}))
-        {
-            @Html.AntiForgeryToken()
-            <nav class="form-horizontal">
-                <h4 class="text-info">Connexion</h4>
-                <hr class=""/>
-                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-                <p>Si vous n'avez pas de compte @Html.ActionLink("Vous inscrire", "Index")</p>
-            </nav>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebAnimalApplicationNET</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAnimalApplicationNET.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "mt-5" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <nav class="form-horizontal">
+                        <h4 class="text-info">Connexion</h4>
+                        <hr class="" />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <p>Si vous n'avez pas de compte @Html.ActionLink("Vous inscrire", "Index")</p>
+                    </nav>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new {@class = "control-label col-md-2"})
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new {htmlAttributeValue = new {@class = "form-control"}})
-                    @Html.ValidationMessageFor(model => model.UserName, "", new {@class = "text-danger"})
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new {@class = "control-label col-md-2"})
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new {htmlAttributeValue = new {@class = "form-control"}})
-                    @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
-                </div>
-            </div>
-
-            <nav class="navbar navbar-default">
-                <a href="/User/Index" class="btn btn-link btn-xs">Mot de passe oublié</a>
-                <div class="nav navbar-nav navbar-right">
-                    <div class="btn-group btn-group-justified">
-                        <input type="reset" value="Annuler" class="btn btn-danger" />
-                        <input type="submit" value="Se connecter" class="btn btn-info" />
-                        <p>@Model.Message</p>
+                    <!-- Rest of the form controls here -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new {@class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserName, new {htmlAttributeValue = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.UserName, "", new {@class = "text-danger"})
+                        </div>
                     </div>
-                </div>
-            </nav>
-        }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new {@class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new {htmlAttributeValue = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "form-check-label" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="navbar navbar-default">
+                        <a href="/User/Index" class="btn btn-link btn-xs">Mot de passe oublié</a>
+                        <div class="nav navbar-nav navbar-right">
+                            <div class="btn-group btn-group-justified">
+                                <input type="reset" value="Annuler" class="btn btn-danger" />
+                                <input type="submit" value="Se connecter" class="btn btn-info" />
+                                <p>@Model.Message</p>
+                            </div>
+                        </div>
+                    </nav>
+                }
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

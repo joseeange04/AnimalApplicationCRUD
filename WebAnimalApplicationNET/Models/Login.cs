@@ -13,6 +13,9 @@ namespace WebAnimalApplicationNET.Models
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Mot de passe obligatoire")]
         public string Password { get; set; }
+
+        [DisplayName("Se souvenir de moi")]
+        public bool RememberMe { get; set; }
         public string Message { get; set; }
 
     }

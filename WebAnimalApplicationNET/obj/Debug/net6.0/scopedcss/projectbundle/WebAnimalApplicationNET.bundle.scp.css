@@ -47,3 +47,10 @@ button.accept-policy[b-iyfyh9or4e] {
   white-space: nowrap;
   line-height: 60px;
 }
+
+/* Dans votre fichier de style CSS */
+.wider-label[b-iyfyh9or4e] {
+    display: inline-block;
+    width: 500px; /* Ajustez la largeur selon vos préférences */
+}
+
