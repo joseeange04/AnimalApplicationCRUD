@@ -1,17 +1,18 @@
 [
   {
-    "id": 1,
-    "name": "Angela",
-    "password": "angela123"
+    "UserId": 1,
+    "UserName": "Angela",
+    "Password": "angela123",
+    "RememberMe": false,
+    "Message": ""
   },
   {
-    "id": 2,
-    "name": "Iano",
-    "password": "iano123"
-  },
-  {
-    "id": 3,
-    "name": "Guest",
-    "password": "guest123"
+    "UserId": 2,
+    "UserName": "Iano",
+    "Password": "iano123",
+    "RememberMe": false,
+    "Message": ""
   }
+  // ...
 ]
+

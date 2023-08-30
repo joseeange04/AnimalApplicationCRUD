@@ -4,6 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 using WebAnimalApplicationNET.Models;
 using System.Reflection;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAnimalApplicationNET.Controllers
 {
@@ -35,6 +36,25 @@ namespace WebAnimalApplicationNET.Controllers
             return new string(tokenChars);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+
+        public IActionResult List()
+        {
+            try
+            {
+                List<Login> liste = _userRepository.GetAllUsers().ToList();
+                ViewBag.res = "okey";
+                return View(liste);
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.res = ex.Message;
+                return View(new List<Login>());
+            }
+        }
+
 
         [HttpGet]
         public IActionResult Index()
@@ -43,6 +63,8 @@ namespace WebAnimalApplicationNET.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(Login loginModel)
         {
             if (ModelState.IsValid)
@@ -50,7 +72,7 @@ namespace WebAnimalApplicationNET.Controllers
                 List<Login> users = _userRepository.GetAllUsers();
 
                 // Vérification des informations d'identification ici (exemple simplifié)
-                Login user = users.Find(u => u.UserName == loginModel.UserName && u.Password == loginModel.Password);
+                Login user = users.FirstOrDefault(u => u.UserName == loginModel.UserName && u.Password == loginModel.Password);
 
                 if (user != null)
                 {
@@ -61,26 +83,11 @@ namespace WebAnimalApplicationNET.Controllers
                 {
                     // Identifiant ou mot de passe incorrect
                     loginModel.Message = "Identifiant ou mot de passe incorrect.";
+
                 }
+                return RedirectToAction("Index", "Animal");
 
-                //// Si l'authentification réussit et que RememberMe est coché
-                //if (loginModel.RememberMe)
-                //{
-                //    // Générer un jeton de sécurité
-                //    string securityToken = GenerateSecurityToken();
-
-                //    // Créer un cookie pour stocker le jeton
-                //    var cookieOptions = new CookieOptions
-                //    {
-                //        Expires = DateTime.UtcNow.AddMonths(1) // Expire dans 1 mois
-                //    };
-
-                //    Response.Cookies.Append("RememberMeToken", securityToken, cookieOptions);
-                //}
-
-                return View(loginModel);
             }
-
             return View(loginModel);
         }
     }

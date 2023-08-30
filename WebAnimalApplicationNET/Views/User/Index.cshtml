@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "mt-5" }))
+                @using (Html.BeginForm("Index", "User", FormMethod.Post, new { @class = "mt-5" }))
                 {
                     @Html.AntiForgeryToken()
                     <nav class="form-horizontal">
