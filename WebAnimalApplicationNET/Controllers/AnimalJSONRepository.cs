@@ -83,6 +83,7 @@ namespace WebAnimalApplicationNET.Controllers
                 existingAnimal.nom = updatedAnimal.nom;
                 existingAnimal.pattes = updatedAnimal.pattes;
                 existingAnimal.couleur = updatedAnimal.couleur;
+                existingAnimal.image = updatedAnimal.image;
 
                 // Enregistrement de la liste mise à jour
                 using (StreamWriter writer = new StreamWriter(_fichier))

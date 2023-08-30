@@ -57,7 +57,14 @@ namespace WebAnimalApplicationNET
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+               endpoints.MapControllerRoute(
+               name: "editAnimal",
+               pattern: "{controller=Animal}/{action=Edit}/{id?}");
             });
+
+           
+
         }
     }
 }
