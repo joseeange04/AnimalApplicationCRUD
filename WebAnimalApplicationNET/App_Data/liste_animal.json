@@ -1,5 +1,6 @@
 [
   {
+    "id" : 1,
     "Type": "Chien",
     "Nom": "Ballou",
     "Couleur": "Marron",
@@ -7,6 +8,7 @@
     "ImageF": null
   },
   {
+    "id": 2,
     "Type": "Chat",
     "Nom": "Mino",
     "Couleur": "Rouille",
@@ -14,6 +16,7 @@
     "ImageF": null
   },
   {
+    "id": 3,
     "Type": "Souris",
     "Nom": "Jerry",
     "Couleur": "Gris",

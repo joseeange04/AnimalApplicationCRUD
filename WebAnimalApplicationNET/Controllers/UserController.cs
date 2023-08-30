@@ -67,8 +67,8 @@ namespace WebAnimalApplicationNET.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(Login loginModel)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 List<Login> users = _userRepository.GetAllUsers();
 
                 // Vérification des informations d'identification ici (exemple simplifié)
@@ -76,19 +76,36 @@ namespace WebAnimalApplicationNET.Controllers
 
                 if (user != null)
                 {
-                    // Connexion réussie
+                // Connexion réussie
                     loginModel.Message = "Connexion réussie !";
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     // Identifiant ou mot de passe incorrect
                     loginModel.Message = "Identifiant ou mot de passe incorrect.";
-
-                }
-                return RedirectToAction("Index", "Animal");
-
+                    return View(loginModel);
             }
-            return View(loginModel);
+
+                // Si l'authentification réussit et que RememberMe est coché
+                if (loginModel.RememberMe)
+                {
+                    // Générer un jeton de sécurité
+                    string securityToken = GenerateSecurityToken();
+
+                    // Créer un cookie pour stocker le jeton
+                    var cookieOptions = new CookieOptions
+                    {
+                        Expires = DateTime.UtcNow.AddMonths(1) // Expire dans 1 mois
+                    };
+
+                    Response.Cookies.Append("RememberMeToken", securityToken, cookieOptions);
+                }
+
+                //return RedirectToAction("Index", "Home");
+            //}
+
+            //return View(loginModel);
         }
     }
 }

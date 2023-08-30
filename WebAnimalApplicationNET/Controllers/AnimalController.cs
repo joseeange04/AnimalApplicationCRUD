@@ -49,7 +49,7 @@ namespace WebAnimalApplicationNET.Controllers
         public IActionResult Create(Animal animal)
         {
 
-            Animal a = new Animal(animal.id, animal.type, animal.nom, animal.couleur, animal.pattes);
+            Animal a = new Animal(animal.id, animal.type, animal.nom, animal.couleur, animal.pattes, animal.image);
             _repertoire.SetAnimal(a);
             Console.WriteLine(a);
             return RedirectToAction("Index", "Animal");
